@@ -1,7 +1,8 @@
 const express = require("express");
 require('dotenv').config()
 const mongoose = require("mongoose");
-const fileUpload = require('express-fileupload')
+const fileUpload = require('express-fileupload');
+const errorMiddleware = require("./middleware/error.middleware");
 const app = express();
 app.use(express.json());
 app.use(express.static('static'))
@@ -12,6 +13,9 @@ app.use(fileUpload({}))
 // API endpoints
 app.use('/api/post', require('./routes/post.route'))
 app.use('/api/auth', require('./routes/auth.route'))
+
+//  Mieddleware
+app.use(errorMiddleware)
 
 
 const PORT = process.env.PORT || 3000;

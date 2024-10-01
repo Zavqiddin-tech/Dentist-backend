@@ -1,52 +1,55 @@
 const postService = require("../service/post.service");
 
 class PostController {
-  async getAll(req, res) {
+  async getAll(req, res, next) {
     try {
-      const allPosts = await postService.getAll();
+      const allPosts = await postService.getAll(req, res);
       res.status(200).json(allPosts);
     } catch (error) {
-      res.status(500).json(error);
+      next(error);
     }
   }
-  
-	async create(req, res) {
+
+  async create(req, res, next) {
     try {
-      const newPost = await postService.create(req.body, req.files.picture)
+      const newPost = await postService.create(
+        req.body,
+        req.files.picture,
+        req.user.id
+      );
       res.status(201).json(newPost);
     } catch (error) {
-      res.status(500).json(error);
+      next(error);
     }
   }
-	
-	async delete(req, res) {
+
+  async delete(req, res, next) {
     try {
-      const deletePost = await postService.delete(req.params.id)
+      const deletePost = await postService.delete(req.params.id);
       res.status(200).json(deletePost);
     } catch (error) {
-      res.status(500).json(error);
+      next(error);
     }
   }
 
-	async edit(req, res) {
-		try {
-			const {body, params} = req
-			const post = await postService.edit(body, params.id)
-			res.status(200).json(post)
-		} catch (error) {
-			res.status(500).json(error);
-		}
-	}
-
-  async getOne(req, res) {
+  async edit(req, res, next) {
     try {
-      const post = await postService.getOne(params.id)
-			res.status(200).json(post)
+      const { body, params } = req;
+      const post = await postService.edit(body, params.id);
+      res.status(200).json(post);
     } catch (error) {
-      res.status(500).json(error);
+      next(error);
+    }
+  }
+
+  async getOne(req, res, next) {
+    try {
+      const post = await postService.getOne(params.id);
+      res.status(200).json(post);
+    } catch (error) {
+      next(error);
     }
   }
 }
 
-
-module.exports = new PostController()
+module.exports = new PostController();

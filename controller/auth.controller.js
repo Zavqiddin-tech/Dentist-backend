@@ -26,7 +26,7 @@ class AuthController {
 
       return res.json(data);
     } catch (error) {
-      console.log(error);
+      next(error)
     }
   }
 
@@ -36,7 +36,7 @@ class AuthController {
       const data = await authService.login(userName, password);
       return res.json(data);
     } catch (error) {
-      console.log(error);
+      next(error)
     }
   }
 
@@ -46,7 +46,7 @@ class AuthController {
       const token = await authService.logout(refreshToken);
       res.json({ token });
     } catch (error) {
-      console.log(error);
+      next(error)
     }
   }
 
@@ -56,7 +56,7 @@ class AuthController {
       const data = await authService.refresh(refreshToken);
       return res.json(data);
     } catch (error) {
-      console.log(error);
+      next(error)
     }
   }
 }
