@@ -59,6 +59,11 @@ class AuthController {
       next(error)
     }
   }
+
+  // check
+  async checkUser(req, res) {
+    res.status(200).json({ message: "User is authenticated"})
+  }
 }
 
 module.exports = new AuthController();

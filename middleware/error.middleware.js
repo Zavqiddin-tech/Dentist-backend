@@ -9,5 +9,5 @@ module.exports = function (err, req, res, next) {
       .json({ message: err.message, errors: err.errors });
   }
 
-  return res.status(500).json({ message: "Server error" });
+  return res.status(500).json({ message: err.message });
 };

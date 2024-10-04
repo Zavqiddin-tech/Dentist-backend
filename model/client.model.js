@@ -7,7 +7,7 @@ const clientSchema = new Schema(
     lastName: { type: String, required: true },
     birthday: { type: String, required: true },
     address: { type: String, required: true },
-    phone: { type: String, required: true },
+    phone: { type: String },
   },
   { timestamps: true }
 );

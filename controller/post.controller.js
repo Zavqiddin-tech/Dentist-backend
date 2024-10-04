@@ -44,7 +44,7 @@ class PostController {
 
   async getOne(req, res, next) {
     try {
-      const post = await postService.getOne(params.id);
+      const post = await postService.getOne(req.params.id);
       res.status(200).json(post);
     } catch (error) {
       next(error);
