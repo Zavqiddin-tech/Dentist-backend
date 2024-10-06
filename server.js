@@ -12,9 +12,10 @@ app.use(cors())
 
 // API endpoints
 app.use("/api/auth", require("./routes/auth.route"));
-app.use("/api/post", require("./routes/post.route"));
-app.use("/api/doctor", require("./routes/doctor.route"));
 app.use("/api/client", require("./routes/client.route"))
+app.use("/api/doctor", require("./routes/doctor.route"));
+app.use("/api/post", require("./routes/post.route"));
+app.use("/api/treatment", require("./routes/treatment.route"));
 app.use("/api/types", require("./routes/types.route"))
 
 //  Mieddleware

@@ -30,6 +30,15 @@ class ClientController {
       next(error);
     }
   }
+  
+  async getSearch(req, res, next) {
+    try {
+      const client = await clientService.getSearch(req.query.search);
+      res.status(200).json(client);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   async edit(req, res, next) {
     try {

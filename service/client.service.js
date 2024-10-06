@@ -34,6 +34,14 @@ class ClientService {
     const client = await clientModel.findByIdAndDelete(id);
     return client;
   }
+
+  // query
+  async getSearch(search) {
+    const client = await clientModel.find({
+      firstName: {$regex: search, $options: 'i'}
+    })
+    return client
+  }
 }
 
 
