@@ -36,8 +36,9 @@ class ClientService {
   }
 
   // query
-  async getSearch(search) {
+  async getSearch(author, search) {
     const client = await clientModel.find({
+      author,
       firstName: {$regex: search, $options: 'i'}
     })
     return client

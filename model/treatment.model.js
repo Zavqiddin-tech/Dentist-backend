@@ -11,9 +11,10 @@ const treatmentSchema = new Schema(
       enum: ["ortopediya", "terapiya"],
       required: true,
     },
-    title: { type: Number, required: true },
+    deadline: { type: Date },
+    title: { type: String, required: true },
     price: { type: Number, required: true },
-    paid: { type: Number, default: 0 },
+    paid: { type: Number },
   },
   { timestamps: true }
 );

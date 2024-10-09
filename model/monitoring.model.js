@@ -7,4 +7,4 @@ const monitoringSchema = new Schema(
   { timestamps: true }
 );
 
-module.exportts = model("Monitoring", monitoringSchema);
+module.exports = model("Monitoring", monitoringSchema);

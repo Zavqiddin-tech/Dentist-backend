@@ -12,10 +12,7 @@ class ClientController {
 
   async create(req, res, next) {
     try {
-      const newClient = await clientService.create(
-        req.body,
-        req.user.id
-      );
+      const newClient = await clientService.create(req.body, req.user.id);
       res.status(201).json(newClient);
     } catch (error) {
       next(error);
@@ -30,10 +27,13 @@ class ClientController {
       next(error);
     }
   }
-  
+
   async getSearch(req, res, next) {
     try {
-      const client = await clientService.getSearch(req.query.search);
+      const client = await clientService.getSearch(
+        req.user.id,
+        req.query.search
+      );
       res.status(200).json(client);
     } catch (error) {
       next(error);

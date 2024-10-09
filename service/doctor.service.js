@@ -3,7 +3,6 @@ const fileService = require("./file.service");
 
 class DoctorService {
   async getAll(req, res) {
-    console.log(req.user);
     const allDoctors = doctorModel.find({ author: req.user.id });
     return allDoctors;
   }
