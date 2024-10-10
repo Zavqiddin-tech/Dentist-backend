@@ -73,8 +73,8 @@ class TreatmentService {
 
   async create(body, author) {
     const monitoringHistory = [];
-
-    if (body.paid && body.paid > 0 && body.price >= body.paid) {
+    
+    if (body.paid >= 0 && body.price >= body.paid) {
       const newMonitoring = new monitoringModel({
         amount: body.paid,
       });

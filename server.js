@@ -17,6 +17,7 @@ app.use("/api/doctor", require("./routes/doctor.route"));
 app.use("/api/post", require("./routes/post.route"));
 app.use("/api/treatment", require("./routes/treatment.route"));
 app.use("/api/types", require("./routes/types.route"))
+app.use("/api/report", require("./routes/report.route"))
 
 //  Mieddleware
 app.use(errorMiddleware);
