@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1a92c093-780b-42ec-a215-19e3de1df153" name="dentist" url="95.130.227.79">
+        <fileTransfer rootFolder="/var/www/dentist/Dentist-backend" accessType="SFTP" host="95.130.227.79" port="22" sshConfigId="a9a7e130-706a-43dd-8abb-72ce52d96df4" sshConfig="root@95.130.227.79:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

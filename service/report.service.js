@@ -33,8 +33,6 @@ class ReportServeice {
       (price += item.price), (paid += item.paid);
     });
 
-    console.log(price, paid);
-
     let up =
       "fa-solid fa-caret-up txt-lg pr-2 text-green-500 group:text-green-500";
     let down = "fa-solid fa-caret-down txt-lg pr-2 text-red-500";

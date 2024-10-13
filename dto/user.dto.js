@@ -1,21 +1,21 @@
 module.exports = class UserDto {
   id;
-  userName;
-  activated;
   firstName;
   lastName;
   hospital;
   phone;
+  userName;
+  activated;
   role;
 
   constructor(model) {
     this.id = model._id;
-    this.userName = model.userName;
-    this.activated = model.activated;
     this.firstName = model.firstName;
     this.lastName = model.lastName;
     this.hospital = model.hospital;
     this.phone = model.phone;
+    this.userName = model.userName;
+    this.activated = model.activated;
     this.role = model.role;
   }
 };

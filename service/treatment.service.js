@@ -5,7 +5,6 @@ class TreatmentService {
   async getAll(req, res) {
     let query = { author: req.user.id };
     let deadline = new Date(req.query.date);
-    console.log("deadline", deadline);
     if (deadline) {
       const startOfDay = new Date(deadline);
       startOfDay.setHours(0, 0, 0, 0); // kunning boshlanishi
@@ -103,7 +102,6 @@ class TreatmentService {
         model: "Monitoring",
       });
 
-    console.log(populatedTreatment);
     return populatedTreatment;
   }
 

@@ -2,9 +2,8 @@ const clientModel = require("../model/client.model")
 
 class ClientService {
   async getAll(req, res) {
-    console.log(req.user);
-    const allDoctors = clientModel.find({ author: req.user.id });
-    return allDoctors;
+    const allClients = clientModel.find({ author: req.user.id });
+    return allClients;
   }
 
   async create(body, author) {

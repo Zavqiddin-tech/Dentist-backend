@@ -3,7 +3,6 @@ const fileService = require("./file.service");
 
 class PostServeice {
   async getAll(req, res) {
-    console.log(req.user);
     const allPosts = await postModel.find();
     return allPosts;
   }

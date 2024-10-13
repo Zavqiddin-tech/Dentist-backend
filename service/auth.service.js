@@ -14,6 +14,10 @@ class AuthService {
     phone,
     role
   ) {
+    if (role === "admin") {
+      throw new Error("admin mavjud");
+    }
+
     const existUser = await userModel.findOne({ userName });
 
     if (existUser) {
@@ -84,6 +88,40 @@ class AuthService {
     const tokens = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return { user: userDto, ...tokens };
+  }
+
+  async checkAdmin(user, res) {
+    if (user.role !== 'admin') {
+      res.status(401).json({message: "sizga bu yerga kira olmaysiz"})
+    }
+  }
+
+  // for frontend
+  async getAll() {
+    const users = await userModel.find();
+    let newUsers = users.map((item) => {
+      return new UserDto(item);
+    });
+    return newUsers;
+  }
+
+  async changeStatus(data) {
+    const changedUser = await userModel.findByIdAndUpdate(
+      data.id,
+      { activated: !data.activated },
+      { new: true }
+    );
+
+    return new UserDto(changedUser);
+  }
+
+  async deleteUser(admin, id) {
+    const user = await userModel.findById(id)
+    if (admin.role === 'admin' && user.role !== 'admin') {
+      await userModel.findByIdAndDelete(id)
+    } else {
+      throw new Error('Sizga mumkin emas')
+    }
   }
 }
 

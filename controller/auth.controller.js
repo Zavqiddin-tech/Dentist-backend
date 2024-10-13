@@ -61,9 +61,45 @@ class AuthController {
   }
 
   // check
-  async checkUser(req, res) {
-    res.status(200).json({ message: "User is authenticated"})
+  async checkUser(req, res, next) {
   }
+  async checkAdmin(req, res, next) {
+    try {
+      const data = await authService.checkAdmin(req.user, res);
+      return res.json(data);
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  // for frontend
+  async getAll(req, res, next) {
+    try {
+      const data = await authService.getAll();
+      return res.json(data);
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async changeStatus(req, res, next) {
+    try {
+      const data = await authService.changeStatus(req.body);
+      return res.json(data);
+    } catch (error) {
+      next(error)
+    }
+  }
+  
+  async deleteUser(req, res, next) {
+    try {
+      const data = await authService.deleteUser(req.user, req.params.id);
+      return res.json(data);
+    } catch (error) {
+      next(error)
+    }
+  }
+
 }
 
 module.exports = new AuthController();

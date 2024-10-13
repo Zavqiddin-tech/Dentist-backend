@@ -18,6 +18,10 @@ module.exports = function (req, res, next) {
       return next(BaseError.UnauthorizedError());
     }
 
+    if (!userData.activated) {
+      return next(BaseError.UnauthorizedError("sizga kirishga ruxsat yo'q"))
+    }
+
     req.user = userData;
     next();
   } catch (error) {
